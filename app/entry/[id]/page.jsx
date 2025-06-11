@@ -2,7 +2,12 @@ import Link from 'next/link';
 
 const SingleEntry = async ({ params }) => {
 	const { id } = await params;
-	const response = await fetch(`api/entry/${id}`);
+	const baseUrl =
+		process.env.NODE_ENV === 'development'
+			? 'http://localhost:3000'
+			: process.env.NEXT_PUBLIC_PROD_URL;
+	console.log(baseUrl);
+	const response = await fetch(`${baseUrl}/api/entry/${id}`);
 	const entry = await response.json();
 
 	return (

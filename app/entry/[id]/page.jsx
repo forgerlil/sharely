@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 const SingleEntry = async ({ params }) => {
 	const { id } = await params;
-	const response = await fetch(`http://localhost:3000/api/entry/${id}`);
+	const response = await fetch(`api/entry/${id}`);
 	const entry = await response.json();
 
 	return (
